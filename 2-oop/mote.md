@@ -153,4 +153,4 @@
         Person.work(self)
         #扩充父类的另一种方法
         #super代表得到父类
-        super().work()
+        super().work() 
