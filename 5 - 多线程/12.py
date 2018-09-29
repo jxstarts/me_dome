@@ -4,15 +4,21 @@ import threading
 sum = 0
 loopSum = 1000000
 
+lock = threading.Lock()
+
 def myAdd():
     global sum, loopSum
     for i in range(1, loopSum):
+        lock.acquire()
         sum += 1
+        lock.release()
 
 def myMinu():
     global sum, loopSum
     for i in range(1, loopSum):
+        lock.acquire()
         sum -= 1
+        lock.release()
 
 if __name__ == '__main__':
 
