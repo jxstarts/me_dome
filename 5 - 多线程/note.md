@@ -84,5 +84,34 @@
     - 一个模型，可以用来搭建消息队列
     - queue是一个用来存放变量的数据结构，特点是先进先出，内部元素排队，可以理解成一个特殊的list
     案例13
-        
-            
+
+# 线程替代方案
+- subprocess
+    - 完全跳过线程，使用进程 
+    - 是派生进程的主要替代方案
+    - Python2.4后引入
+- multiprocessiong
+    - threading接口培生，使用子进程
+    - 允许为多核或者多CPU派生进程，接口跟threading非常相似
+    - Python2.6
+- concurrent.futures
+    - 新的异步执行模块 
+    - 任务级别的操作
+    - Python3.2后引入
+# 多进程
+- 进程间通讯（InterprocessCommunication，IPC）
+- 进程之间无任何共享状态
+- 进程的创建
+    - 直接生成Process实例对象， 案例19
+    - 派生子类，案例20
+- 在os中查看pid.ppid以及他们的关系
+    - 案例21
+- 生产消费者模型
+    - JoinableQueue
+    - 案例22
+    - 队列中哨兵的使用 
+    - 案例23
+    - 哨兵的改进
+    - 案例24
+    
+
