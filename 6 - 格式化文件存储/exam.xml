@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?><!-- 处理指令 -->
+
+<School type="online" loc="yichang">
+    <Student type="web">
+        <score>89</score>
+        <name>hhaha</name>
+        <age>18</age>
+    </Student>
+
+    <Student>
+        <name>ddd</name>
+        <age>18</age>
+    </Student>
+
+    <Student>
+        <name>qqq</name>
+        <age>18</age>
+    </Student>
+</School>
