@@ -1,0 +1,17 @@
+<School>
+    <Teacher desc="&#20315;&#25945;" score="&#20248;">
+        <Name>&#21776;&#20711;</Name>
+        <Age detail="Age for year 2010">500</Age>
+        <Mobile>15666666666</Mobile>
+    </Teacher>
+    <Student>
+        <Name Other="&#20182;&#26159;&#25179;&#25226;&#23376;" text="aaaaaaaaaa">aaaaa</Name>
+        <Age Detail="The yongest boy in class">800</Age>
+
+    <ADDer a="b">&#25105;&#21152;&#30340;</ADDer><ADDer a="b">&#25105;&#21152;&#30340;</ADDer><ADDer a="b">&#25105;&#21152;&#30340;</ADDer></Student>
+    <Student>
+        <Name text="aaaaaaaaaa">aaaaa</Name>
+        <Age>900</Age>
+        <Mobile>15888888888</Mobile>
+    </Student>
+</School>
