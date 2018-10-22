@@ -5,8 +5,12 @@ from urllib import request, parse
 from http import cookiejar
 
 
-# 创建cookie的实例
-cookie = cookiejar.CookieJar()
+
+# 创建filecookie的实例
+
+filename = "cookie.txt"
+
+cookie = cookiejar.MozillaCookieJar(filename)
 
 # 生成 cookie的管理器
 cookie_handler = request.HTTPCookieProcessor(cookie)
@@ -41,17 +45,12 @@ def login():
     # 使用opener发起请求
     rsp = opener.open(req)
 
-def getHomePage():
-    url = "http://www.renren.com/965187997/profile"
-    # 如果已经执行了login函数，则opener自动已经包含相应的cookie值
-    rsp = opener.open(url)
+    # 保存cookie到文件
+    # ignore_discard表示即使cookie将要被丢弃也要被保存下来
+    # ignore_expires表示如果该文件中cookie即使已经过期也要保存下来
+    cookie.save(ignore_discard=True, ignore_expires=True)
 
-    html = rsp.read().decode()
-
-    with open("rsp.html", "w", encoding="utf-8") as f:
-        f.write(html)
 if __name__ == '__main__':
 
     login()
-    getHomePage()
 

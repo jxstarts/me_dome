@@ -159,3 +159,38 @@
         - 打开登录页面后自动通过用户名密码登录
         - 自动提取反馈回来的cookie
         - 利用提取的cookie登录隐私页面
+    - handler 是 handler的实例，常用参看案例代码
+            # 生成 cookie的管理器
+            cookie_handler = request.HTTPCookieProcessor(cookie)
+    
+            # 创建http请求管理器
+            http_handler = request.HTTPHandler()
+            
+            # 生成HTTPS管理器
+            https_handler = request.HTTPSHandler()
+    - 创立handler后，使用opener打开，打开后相应的业务由相应的handler处理
+    - cookie作为一个变量，打印出来，案例v14
+        - name: 名称
+        - value：值
+        - domain：可以访问此cookie的域名
+        - path： 可以访问此cookie的页面路径
+        - expires：过期时间
+        - size：大小
+        - HTTP字段
+    - cookie 的保存 - FileCookieJar，案例v15
+    - cookeie 的读取， 案例v16
+    
+- SSL
+    - SSL证书就是指遵守SSL安全套阶层协议的服务器数字证书（SercureSocketLayer）
+    - 美国网景公司开发
+    - CA（CertifacateAuthority）是数字证书认证中心，是发放，管理，废除数字证书的手心人的第三方机构
+    - 遇到不信任的SSL证书，需要单独处理，案例v17
+    
+- js 加密
+ - 有的反爬虫策略采用js对需要传输的数据进行加密处理（通常是md5值）
+ - 经过加密，传输的就是密文，但是
+ - 加密函数或者过程一定是在浏览器完成，也就是一定会把代码（js代码）暴露给使用者
+ - 通过阅读加密算法，就可以模拟出加密过程，从而达到破解
+ - 过程参看案例v18
+    
+            

@@ -41,17 +41,18 @@ def login():
     # 使用opener发起请求
     rsp = opener.open(req)
 
-def getHomePage():
-    url = "http://www.renren.com/965187997/profile"
-    # 如果已经执行了login函数，则opener自动已经包含相应的cookie值
-    rsp = opener.open(url)
-
-    html = rsp.read().decode()
-
-    with open("rsp.html", "w", encoding="utf-8") as f:
-        f.write(html)
 if __name__ == '__main__':
-
+    '''
+    执行完成login之后，会得到授权后的cookie
+    我们尝试把cookie打印出来
+    '''
     login()
-    getHomePage()
+
+    print(cookie)
+    for item in cookie:
+       print(type(item))
+       print(item)
+       for i in dir(item):
+           print(i)
+
 
