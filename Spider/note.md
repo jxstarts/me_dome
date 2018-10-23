@@ -187,10 +187,93 @@
     - 遇到不信任的SSL证书，需要单独处理，案例v17
     
 - js 加密
- - 有的反爬虫策略采用js对需要传输的数据进行加密处理（通常是md5值）
- - 经过加密，传输的就是密文，但是
- - 加密函数或者过程一定是在浏览器完成，也就是一定会把代码（js代码）暴露给使用者
- - 通过阅读加密算法，就可以模拟出加密过程，从而达到破解
- - 过程参看案例v18
+     - 有的反爬虫策略采用js对需要传输的数据进行加密处理（通常是md5值）
+     - 经过加密，传输的就是密文，但是
+     - 加密函数或者过程一定是在浏览器完成，也就是一定会把代码（js代码）暴露给使用者
+     - 通过阅读加密算法，就可以模拟出加密过程，从而达到破解
+     - 过程参看案例v18 v19
+     - 看代码观察
+     
+- ajax
+    - 异步请求
+    - 一定会有url，请求方法可能有数据
+    - 一般使用json格式
+    - 案例，爬取豆瓣电影，v20
     
+# Requests - 先给人类
+- HTTP for Humans ，更简洁更友好
+- 继承了urllib 的所有特征
+- 底层使用的是urllib3
+- 开源地址：https://github.com/requests/requests
+- 中文文档： http://docs.python-requests.org/zh_CN/latest/index.html   
+- 安装： conda install requests
+- get请求
+    - requests.get()
+    - requests.request("get", url)
+    - 可以带有headers和parmas参数
+    - 案例v21
+- get返回内容
+    - 案例v22
+- post 
+    - rsp = requests.post(url, data=data)
+    - 案例23
+    - date,headers要求dict类型
+- proxy
+        
+            proxies = {
+                
+                "http": "address of proxy"
+                "https": "address of proxy"
+    
+            }
+            rsp = requests.request("get", "http://xxxxx", proxies=proxies)
+    - 代理有可能报错，如果使用人数多，考虑安全问题，可能会强行关闭
+     
+- 用户验证
+    - 代理验证
+               # 可能需要使用HTTP basic Auth， 可以这样
+               # 格式为  用户名：密码@代理地址
+               prox = {"http": "china:123456@192.168.0.123:5855}
+               rsp = request.get("http://baidu.com", proxies=proxy)
+    
+- web客户端验证
+    - 如果遇到web客户端验证，需要添加auth=（用户名，密码）
+            
+            auth = {"test1", "123456"}# 授权信息
+            rsp = requests.get("http://baidu.com", auth=auth)
+            
+- cookie
+    - requests可以自动处理cookie信息
+            
+            rsp = requests.get("http://xxxxxxxx")
+            # 如果对方服务器给传递过来cookie信息，则可以通过反馈的cookie属性得到
+            # 返回一个cookiejar实例
+            cookiejar = rsp.cookies
+            
+            # 可以将CookieJar转换成字典
+            cookie = requests.utils.dict_from_cookiejar(cookiejar)
+            
+- session 
+    - 跟服务器端session不是一个东西
+    - 模拟一次会话，从客户端浏览器链接服务器开始，到客户端浏览器断开
+    - 能让我们夸请求保持某些参数，比如在同一个session势力发出的，所有请求之间保持cookie
+            
+            # 创建session对象，可以保持cookie值
+            ss = requests.session()
+            
+            headers = {"User-Agetn":"xxxxxxxxxxxxxxxxxx"}
+            
+            data = {"name":"xxxxxxxxxxx"}
+            
+            # 此时，由创建的session管理请求，负责发出请求，
+            ss.post("http://www.baidu.com", data=data, headers=headers)
+            
+            rsp = ss.get("xxxxxxxxxxxx")
+            
+- HTTPS请求验证ssl证书
+    - 参数verify负责表示是否需要验证SSL证书，默认是TRUE
+    - 如果不需要验证SSL证书，则设置成FALSE
+                
+            rsp = requests.get("https://www.baidu.com", verify=False)
+            # 如果用verify=True访问12306，会报错，因为他证书有问题 
             

@@ -16,8 +16,8 @@ def youdao(key):
         "to": "AUTO",
         "smartresult": "dict",
         "client": "fanyideskweb",
-        "salt": "1540188153180",
-        "sign": "c7ffc4ff5159b7cd5dcea065a834a05f",
+        "salt": "1540257766029",
+        "sign": "4eb0d250350dd2d6e044a625d6fcdae3",
         "doctype": "json",
         "version": "2.1",
         "keyfrom": "fanyi.web",
@@ -28,7 +28,7 @@ def youdao(key):
     # 参数data需要是bytes格式
     data = parse.urlencode(data).encode()
 
-    handers = {
+    headers = {
 
         "Accept": "application/json,text/javascript,*/*;q = 0.01",
         "Accept-Encoding": "gzip,deflate",
@@ -36,14 +36,15 @@ def youdao(key):
         "Connection": "keep-alive",
         "Content-Length": "201",
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        "Cookie": "OUTFOX_SEARCH_USER_ID=-862125489@10.169.0.83;JSESSIONID=aaaipvux6Ovlz4xDmwAAw;OUTFOX_SEARCH_USER_ID_NCOO = 373533485.789991;___rl__test__cookies = 1540188153176",
+        "Cookie": "OUTFOX_SEARCH_USER_ID=-862125489@10.169.0.83;JSESSIONID=aaaipvux6Ovlz4xDmwAAw;OUTFOX_SEARCH_USER_ID_NCOO = 373533485.789991;___rl__test__cookies=1540188153176",
         "Host": "fanyi.youdao.com",
         "Origin": "http://fanyi.youdao.com",
         "Referer": "http://fanyi.youdao.com/",
-        "User-Agent":"Mozilla / 5.0(WindowsNT6.1;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 70.0.3538.67Safari / 537.36",
+        "User-Agent": "Mozilla/5.0(WindowsNT6.1;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/70.0.3538.67Safari/537.36",
+        "X-Requested-With":"XMLHttpRequest"
     }
 
-    req = request.Request(url=url, handers=handers)
+    req = request.Request(url=url, data=data, headers=headers)
 
     rsp = request.urlopen(req)
 
