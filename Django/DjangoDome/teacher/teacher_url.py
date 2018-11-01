@@ -10,6 +10,6 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     # 视图函数名称只有名称，无括号和参数
-    url(r'^tea/', views.do_app),
+    url(r'hahaha/', views.do_app),
 
 ]
